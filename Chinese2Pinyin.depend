@@ -1,0 +1,68 @@
+# depslib dependency file v1.0
+1411044925 source:/home/jishipu/linux-c/Chinese2Pinyin/sds.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<assert.h>
+	"sds.h"
+	"zmalloc.h"
+	<stdio.h>
+	"testhelp.h"
+	"limits.h"
+
+1411036825 /home/jishipu/linux-c/Chinese2Pinyin/sds.h
+	<sys/types.h>
+	<stdarg.h>
+
+1411036825 /home/jishipu/linux-c/Chinese2Pinyin/zmalloc.h
+	<google/tcmalloc.h>
+	<jemalloc/jemalloc.h>
+	<malloc/malloc.h>
+
+1411042776 /home/jishipu/linux-c/Chinese2Pinyin/testhelp.h
+
+1411045887 source:/home/jishipu/linux-c/Chinese2Pinyin/setproctitle.c
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<errno.h>
+
+1411045368 source:/home/jishipu/linux-c/Chinese2Pinyin/zmalloc.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<pthread.h>
+	"zmalloc.h"
+	<unistd.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<unistd.h>
+	<stdio.h>
+	<stdlib.h>
+	<sys/types.h>
+	<sys/sysctl.h>
+	<mach/task.h>
+	<mach/mach_init.h>
+
+1411047245 source:/home/jishipu/linux-c/Chinese2Pinyin/logger.c
+	<fcntl.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<unistd.h>
+	<time.h>
+	<errno.h>
+	<syslog.h>
+	<stdarg.h>
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"logger.h"
+
+1411047379 /home/jishipu/linux-c/Chinese2Pinyin/logger.h
+	<errno.h>
+	<stdarg.h>
+
