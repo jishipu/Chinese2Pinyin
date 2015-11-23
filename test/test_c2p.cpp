@@ -24,9 +24,9 @@
 
 int main(int argc, char *argv[])
 {
-    sds words = NULL;
-    sds out = NULL;
-    FILE *fp = NULL;
+    sds words = nullptr;
+    sds out = nullptr;
+    FILE *fp = nullptr;
     int len = -1;
 
     words = sdsnew(argv[1] ? argv[1] : "我是中国人");
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
         std::cerr << "ERROR: " << words << " is not utf8 text" << std::endl;
         goto exit;
     }
-    if (NULL == (fp = fopen(CHINESE2PINYIN_DIR "/PinyinData.txt", "r"))) {
+    if (nullptr == (fp = fopen(CHINESE2PINYIN_DIR "/PinyinData.txt", "r"))) {
         std::cerr << "ERROR: failed to open file" << std::endl;
         goto exit;
     }
@@ -45,15 +45,15 @@ int main(int argc, char *argv[])
 exit:
     if (words) {
         sdsfree(words);
-        words = NULL;
+        words = nullptr;
     }
     if (out) {
         sdsfree(out);
-        out = NULL;
+        out = nullptr;
     }
     if (fp) {
         fclose(fp);
-        fp = NULL;
+        fp = nullptr;
     }
     
     return 0;

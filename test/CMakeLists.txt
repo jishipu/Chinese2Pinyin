@@ -1,4 +1,4 @@
-#add_definitions(-std=gnu99)
+add_definitions(-g -std=c++11 -std=gnu99)
 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../
