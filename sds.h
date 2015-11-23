@@ -39,6 +39,10 @@
 #include <sys/types.h>
 #include <stdarg.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * 类型别名，用于指向 sdshdr 的 buf 属性
  */
@@ -65,7 +69,7 @@ struct sdshdr {
  * T = O(1)
  */
 static inline size_t sdslen(const sds s) {
-    struct sdshdr *sh = (void*)(s-(sizeof(struct sdshdr)));
+    struct sdshdr *sh = (struct sdshdr*)(s-(sizeof(struct sdshdr)));
     return sh->len;
 }
 
@@ -75,7 +79,7 @@ static inline size_t sdslen(const sds s) {
  * T = O(1)
  */
 static inline size_t sdsavail(const sds s) {
-    struct sdshdr *sh = (void*)(s-(sizeof(struct sdshdr)));
+    struct sdshdr *sh = (struct sdshdr*)(s-(sizeof(struct sdshdr)));
     return sh->free;
 }
 
@@ -122,5 +126,9 @@ sds sdsMakeRoomFor(sds s, size_t addlen);
 void sdsIncrLen(sds s, int incr);
 sds sdsRemoveFreeSpace(sds s);
 size_t sdsAllocSize(sds s);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

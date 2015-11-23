@@ -1,0 +1,138 @@
+普通的C++测试用例没有问题！
+但是Qt段错误，如下：
+
+gdb ./test/test_qt
+GNU gdb (GDB) 7.10
+Copyright (C) 2015 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-isoft-linux".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./test/test_qt...done.
+(gdb) r
+Starting program: /data/project/xiangzhai/Chinese2Pinyin/build/test/test_qt 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/libthread_db.so.1".
+*** Error in `/data/project/xiangzhai/Chinese2Pinyin/build/test/test_qt': double free or corruption (fasttop): 0x000000000061d9f0 ***
+======= Backtrace: =========
+/lib/libc.so.6(+0x77c65)[0x7ffff6d1dc65]
+/lib/libc.so.6(+0x8129a)[0x7ffff6d2729a]
+/lib/libc.so.6(+0x83a6a)[0x7ffff6d29a6a]
+/lib/libc.so.6(realloc+0x184)[0x7ffff6d2abf4]
+/data/project/xiangzhai/Chinese2Pinyin/build/test/test_qt(zrealloc+0x23)[0x403643]
+/data/project/xiangzhai/Chinese2Pinyin/build/test/test_qt(sdsMakeRoomFor+0x3e)[0x40209e]
+/data/project/xiangzhai/Chinese2Pinyin/build/test/test_qt(sdscatlen+0x1a)[0x4021ba]
+/data/project/xiangzhai/Chinese2Pinyin/build/test/test_qt(utf8_to_pinyin+0x144)[0x4039e4]
+/data/project/xiangzhai/Chinese2Pinyin/build/test/test_qt(main+0x142)[0x401c52]
+/lib/libc.so.6(__libc_start_main+0xf0)[0x7ffff6cc6580]
+/data/project/xiangzhai/Chinese2Pinyin/build/test/test_qt(_start+0x29)[0x401d79]
+======= Memory map: ========
+00400000-00405000 r-xp 00000000 08:01 12332819                           /data/project/xiangzhai/Chinese2Pinyin/build/test/test_qt
+00604000-00605000 rw-p 00004000 08:01 12332819                           /data/project/xiangzhai/Chinese2Pinyin/build/test/test_qt
+00605000-00626000 rw-p 00000000 00:00 0                                  [heap]
+7fffe8000000-7fffe8021000 rw-p 00000000 00:00 0 
+7fffe8021000-7fffec000000 ---p 00000000 00:00 0 
+7fffed01e000-7ffff3ae2000 r--p 00000000 08:04 688998                     /usr/lib/locale/locale-archive
+7ffff3ae2000-7ffff3ae9000 r-xp 00000000 08:04 675207                     /usr/lib/librt-2.22.so
+7ffff3ae9000-7ffff3ce8000 ---p 00007000 08:04 675207                     /usr/lib/librt-2.22.so
+7ffff3ce8000-7ffff3ce9000 r--p 00006000 08:04 675207                     /usr/lib/librt-2.22.so
+7ffff3ce9000-7ffff3cea000 rw-p 00007000 08:04 675207                     /usr/lib/librt-2.22.so
+7ffff3cea000-7ffff3e1f000 r-xp 00000000 08:04 675339                     /usr/lib/libglib-2.0.so.0.4600.2
+7ffff3e1f000-7ffff401f000 ---p 00135000 08:04 675339                     /usr/lib/libglib-2.0.so.0.4600.2
+7ffff401f000-7ffff4021000 rw-p 00135000 08:04 675339                     /usr/lib/libglib-2.0.so.0.4600.2
+7ffff4021000-7ffff4022000 r-xp 00000000 08:04 675345                     /usr/lib/libgthread-2.0.so.0.4600.2
+7ffff4022000-7ffff4221000 ---p 00001000 08:04 675345                     /usr/lib/libgthread-2.0.so.0.4600.2
+7ffff4221000-7ffff4222000 rw-p 00000000 08:04 675345                     /usr/lib/libgthread-2.0.so.0.4600.2
+7ffff4222000-7ffff4225000 r-xp 00000000 08:04 675181                     /usr/lib/libdl-2.22.so
+7ffff4225000-7ffff4424000 ---p 00003000 08:04 675181                     /usr/lib/libdl-2.22.so
+7ffff4424000-7ffff4425000 r--p 00002000 08:04 675181                     /usr/lib/libdl-2.22.so
+7ffff4425000-7ffff4426000 rw-p 00003000 08:04 675181                     /usr/lib/libdl-2.22.so
+7ffff4426000-7ffff448a000 r-xp 00000000 08:04 675402                     /usr/lib/libpcre16.so.0.2.5
+7ffff448a000-7ffff4689000 ---p 00064000 08:04 675402                     /usr/lib/libpcre16.so.0.2.5
+7ffff4689000-7ffff468a000 rw-p 00063000 08:04 675402                     /usr/lib/libpcre16.so.0.2.5
+7ffff468a000-7ffff5e6d000 r--p 00000000 08:04 675585                     /usr/lib/libicudata.so.56.1
+7ffff5e6d000-7ffff606c000 ---p 017e3000 08:04 675585                     /usr/lib/libicudata.so.56.1
+7ffff606c000-7ffff606d000 rw-p 017e2000 08:04 675585                     /usr/lib/libicudata.so.56.1
+7ffff606d000-7ffff61ee000 r-xp 00000000 08:04 675599                     /usr/lib/libicuuc.so.56.1
+7ffff61ee000-7ffff63ed000 ---p 00181000 08:04 675599                     /usr/lib/libicuuc.so.56.1
+7ffff63ed000-7ffff63fe000 rw-p 00180000 08:04 675599                     /usr/lib/libicuuc.so.56.1
+7ffff63fe000-7ffff6400000 rw-p 00000000 00:00 0 
+7ffff6400000-7ffff6663000 r-xp 00000000 08:04 675587                     /usr/lib/libicui18n.so.56.1
+7ffff6663000-7ffff6863000 ---p 00263000 08:04 675587                     /usr/lib/libicui18n.so.56.1
+7ffff6863000-7ffff6872000 rw-p 00263000 08:04 675587                     /usr/lib/libicui18n.so.56.1
+7ffff6872000-7ffff6873000 rw-p 00000000 00:00 0 
+7ffff6873000-7ffff6888000 r-xp 00000000 08:04 675221                     /usr/lib/libz.so.1.2.8
+7ffff6888000-7ffff6a87000 ---p 00015000 08:04 675221                     /usr/lib/libz.so.1.2.8
+7ffff6a87000-7ffff6a88000 r--p 00014000 08:04 675221                     /usr/lib/libz.so.1.2.8
+7ffff6a88000-7ffff6a89000 rw-p 00015000 08:04 675221                     /usr/lib/libz.so.1.2.8
+7ffff6a89000-7ffff6aa1000 r-xp 00000000 08:04 675203                     /usr/lib/libpthread-2.22.so
+7ffff6aa1000-7ffff6ca0000 ---p 00018000 08:04 675203                     /usr/lib/libpthread-2.22.so
+7ffff6ca0000-7ffff6ca1000 r--p 00017000 08:04 675203                     /usr/lib/libpthread-2.22.so
+7ffff6ca1000-7ffff6ca2000 rw-p 00018000 08:04 675203                     /usr/lib/libpthread-2.22.so
+7ffff6ca2000-7ffff6ca6000 rw-p 00000000 00:00 0 
+7ffff6ca6000-7ffff6e5e000 r-xp 00000000 08:04 675175                     /usr/lib/libc-2.22.so
+7ffff6e5e000-7ffff705e000 ---p 001b8000 08:04 675175                     /usr/lib/libc-2.22.so
+7ffff705e000-7ffff7062000 r--p 001b8000 08:04 675175                     /usr/lib/libc-2.22.so
+7ffff7062000-7ffff7064000 rw-p 001bc000 08:04 675175                     /usr/lib/libc-2.22.so
+7ffff7064000-7ffff7068000 rw-p 00000000 00:00 0 
+7ffff7068000-7ffff707e000 r-xp 00000000 08:04 675166                     /usr/lib/libgcc_s.so.1
+7ffff707e000-7ffff727d000 ---p 00016000 08:04 675166                     /usr/lib/libgcc_s.so.1
+7ffff727d000-7ffff727e000 rw-p 00015000 08:04 675166                     /usr/lib/libgcc_s.so.1
+7ffff727e000-7ffff737e000 r-xp 00000000 08:04 675183                     /usr/lib/libm-2.22.so
+7ffff737e000-7ffff757d000 ---p 00100000 08:04 675183                     /usr/lib/libm-2.22.so
+7ffff757d000-7ffff757e000 r--p 000ff000 08:04 675183                     /usr/lib/libm-2.22.so
+7ffff757e000-7ffff757f000 rw-p 00100000 08:04 675183                     /usr/lib/libm-2.22.so
+7ffff757f000-7ffff76ea000 r-xp 00000000 08:04 675223                     /usr/lib/libstdc++.so.6.0.21
+7ffff76ea000-7ffff78ea000 ---p 0016b000 08:04 675223                     /usr/lib/libstdc++.so.6.0.21
+7ffff78ea000-7ffff78f4000 r--p 0016b000 08:04 675223                     /usr/lib/libstdc++.so.6.0.21
+7ffff78f4000-7ffff78f6000 rw-p 00175000 08:04 675223                     /usr/lib/libstdc++.so.6.0.21
+7ffff78f6000-7ffff78fa000 rw-p 00000000 00:00 0 
+7ffff78fa000-7ffff7dc6000 r-xp 00000000 08:04 681421                     /usr/lib/libQt5Core.so.5.5.1
+7ffff7dc6000-7ffff7dd9000 rw-p 004cc000 08:04 681421                     /usr/lib/libQt5Core.so.5.5.1
+7ffff7dd9000-7ffff7ddc000 rw-p 00000000 00:00 0 
+7ffff7ddc000-7ffff7dfd000 r-xp 00000000 08:04 675168                     /usr/lib/ld-2.22.so
+7ffff7fb7000-7ffff7fc1000 rw-p 00000000 00:00 0 
+7ffff7ff5000-7ffff7ff8000 rw-p 00000000 00:00 0 
+7ffff7ff8000-7ffff7ffa000 r--p 00000000 00:00 0                          [vvar]
+7ffff7ffa000-7ffff7ffc000 r-xp 00000000 00:00 0                          [vdso]
+7ffff7ffc000-7ffff7ffd000 r--p 00020000 08:04 675168                     /usr/lib/ld-2.22.so
+7ffff7ffd000-7ffff7ffe000 rw-p 00021000 08:04 675168                     /usr/lib/ld-2.22.so
+7ffff7ffe000-7ffff7fff000 rw-p 00000000 00:00 0 
+7ffffffdd000-7ffffffff000 rw-p 00000000 00:00 0                          [stack]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+Program received signal SIGABRT, Aborted.
+__GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:55
+55      ../sysdeps/unix/sysv/linux/raise.c: 没有那个文件或目录.
+(gdb) bt
+#0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:55
+#1  0x00007ffff6cdc4ea in __GI_abort () at abort.c:89
+#2  0x00007ffff6d1dc6a in __libc_message (do_abort=do_abort@entry=2, 
+    fmt=fmt@entry=0x7ffff6e31720 "*** Error in `%s': %s: 0x%s ***\n")
+    at ../sysdeps/posix/libc_fatal.c:175
+#3  0x00007ffff6d2729a in malloc_printerr (ar_ptr=<optimized out>, ptr=<optimized out>, 
+    str=0x7ffff6e31878 "double free or corruption (fasttop)", action=3) at malloc.c:5000
+#4  _int_free (av=<optimized out>, p=<optimized out>, have_lock=<optimized out>) at malloc.c:3861
+#5  0x00007ffff6d29a6a in _int_realloc (av=av@entry=0x7ffff7062b40 <main_arena>, 
+    oldp=oldp@entry=0x61d9e0, oldsize=oldsize@entry=48, nb=nb@entry=64) at malloc.c:4352
+#6  0x00007ffff6d2abf4 in __GI___libc_realloc (oldmem=0x61d9f0, bytes=49) at malloc.c:3039
+#7  0x0000000000403643 in zrealloc (ptr=<optimized out>, size=size@entry=41)
+    at /data/project/xiangzhai/Chinese2Pinyin/zmalloc.c:174
+#8  0x000000000040209e in sdsMakeRoomFor (s=<optimized out>, addlen=<optimized out>)
+    at /data/project/xiangzhai/Chinese2Pinyin/sds.c:253
+#9  0x00000000004021ba in sdscatlen (s=s@entry=0x61da00 "woshizhong", t=t@entry=0x7fffffffd5f0, 
+    len=len@entry=6) at /data/project/xiangzhai/Chinese2Pinyin/sds.c:436
+#10 0x00000000004039e4 in utf8_to_pinyin (in=in@entry=0x61ded0 "我是中国人", 
+    out=out@entry=0x61da00 "woshizhong", fp=fp@entry=0x61d7c0)
+    at /data/project/xiangzhai/Chinese2Pinyin/functions.c:36
+#11 0x0000000000401c52 in main (argc=1, argv=<optimized out>)
+    at /data/project/xiangzhai/Chinese2Pinyin/test/test_qt.cpp:45
+(gdb)
